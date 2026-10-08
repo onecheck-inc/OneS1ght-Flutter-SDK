@@ -1,0 +1,29 @@
+name: ones1ght_sdk
+description: "OneS1ght indoor location intelligence SDK for Flutter — wraps the OneS1ght iOS and Android SDKs. Preview, not an official release."
+version: 0.0.1
+homepage: https://github.com/onecheck-inc/OneS1ght-Flutter-SDK
+# 미리보기 — pub.dev 에 올리지 않는다. 앱은 git 의존성으로 붙인다(README).
+publish_to: none
+
+environment:
+  sdk: ^3.8.0
+  # iOS 는 Swift Package Manager 로만 붙는다 — Flutter 3.44 부터 기본으로 켜진다.
+  flutter: '>=3.44.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: co.onecheck.ones1ght.flutter
+        pluginClass: Ones1ghtPlugin
+      ios:
+        pluginClass: Ones1ghtPlugin

@@ -1,0 +1,3 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 권한은 OneS1ght Android SDK 매니페스트가 함께 병합된다(README). 여기서 더하지 않는다. -->
+</manifest>
