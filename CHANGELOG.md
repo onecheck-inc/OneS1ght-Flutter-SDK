@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.3 — preview
+
+- iOS: SDK error `message` is now a readable sentence with the code (`"… (E1001)"`), the same shape as Android.
+  It was the bare case name (`notInitialized`). `code`, `kind` and `name` are unchanged.
+- Note: `^0.0.2` does not pick up 0.0.3 — in Dart a caret on `0.0.x` allows only that patch. Use `^0.0.3`.
+
 ## 0.0.2 — preview
 
 First release on pub.dev.
