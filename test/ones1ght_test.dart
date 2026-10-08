@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ones1ght_sdk/ones1ght.dart';
+import 'package:ones1ght_sdk/ones1ght_sdk.dart';
 
 // 네이티브 플러그인을 흉내 낸다 — 채널 계약(메서드 이름·인자·응답 모양·오류 코드)을 Dart 쪽에서 고정한다.
 // 네이티브 쪽은 example 앱을 시뮬레이터·에뮬레이터에서 돌려 확인한다(README).

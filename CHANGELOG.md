@@ -1,8 +1,16 @@
 # Changelog
 
+## 0.0.2 — preview
+
+First release on pub.dev.
+
+- Install with `flutter pub add ones1ght_sdk` (git dependency no longer needed).
+- Main library is now `package:ones1ght_sdk/ones1ght_sdk.dart`. The 0.0.1 path `ones1ght.dart` still works.
+- No API or behavior changes. Native SDKs unchanged (iOS `0.2.2`, Android `0.0.9`).
+
 ## 0.0.1 — preview
 
-First preview. Not an official release; not published to pub.dev.
+First preview, distributed as a git dependency.
 
 - Wraps the OneS1ght iOS SDK `0.2.2` (Swift Package Manager) and Android SDK `0.0.9` (Maven Central).
 - Dart API follows the iOS SDK names. Native callbacks are `Stream`s.

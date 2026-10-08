@@ -2,8 +2,7 @@
 
 [English](README.md) | **한국어**
 
-> ⚠️ **미리보기 — 정식 배포가 아닙니다.** pub.dev 에 올라가 있지 않고 API 가 바뀔 수 있습니다.
-> 평가용으로 쓰세요. 정식 지원 SDK 는 네이티브
+> ⚠️ **미리보기입니다.** 1.0 전까지 API 가 바뀔 수 있습니다. 정식 지원 SDK 는 네이티브
 > [iOS](https://github.com/onecheck-inc/OneS1ght-iOS-SDK) ·
 > [Android](https://github.com/onecheck-inc/OneS1ght-Android-SDK) SDK 입니다.
 
@@ -34,17 +33,22 @@ SDK 키(`ock_sdk_…`, OneS1ght 콘솔 → **모바일 SDK**)와, 고객사에 �
 
 ## Step 1: 플러그인 추가
 
+```sh
+flutter pub add ones1ght_sdk
+```
+
+또는 `pubspec.yaml` 에:
+
 ```yaml
 dependencies:
-  ones1ght_sdk:
-    git:
-      url: https://github.com/onecheck-inc/OneS1ght-Flutter-SDK
-      ref: v0.0.1
+  ones1ght_sdk: ^0.0.2
 ```
 
 ```dart
-import 'package:ones1ght_sdk/ones1ght.dart';
+import 'package:ones1ght_sdk/ones1ght_sdk.dart';
 ```
+
+> 0.0.1 의 경로 `package:ones1ght_sdk/ones1ght.dart` 도 그대로 동작합니다.
 
 ### iOS
 

@@ -5,7 +5,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:ones1ght_sdk/ones1ght.dart';
+import 'package:ones1ght_sdk/ones1ght_sdk.dart';
 
 const _sdkKey = String.fromEnvironment('ONES1GHT_SDK_KEY');
 

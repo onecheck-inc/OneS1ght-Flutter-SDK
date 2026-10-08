@@ -2,8 +2,7 @@
 
 **English** | [한국어](README.ko.md)
 
-> ⚠️ **Preview — not an official release.** This plugin is not published to pub.dev and its API may
-> change. Use it for evaluation. The supported SDKs are the native
+> ⚠️ **Preview.** The API may change before 1.0. The officially supported SDKs are the native
 > [iOS](https://github.com/onecheck-inc/OneS1ght-iOS-SDK) and
 > [Android](https://github.com/onecheck-inc/OneS1ght-Android-SDK) SDKs.
 
@@ -35,17 +34,22 @@ locators and zones set up for your tenant.
 
 ## Step 1: Add the plugin
 
+```sh
+flutter pub add ones1ght_sdk
+```
+
+or in `pubspec.yaml`:
+
 ```yaml
 dependencies:
-  ones1ght_sdk:
-    git:
-      url: https://github.com/onecheck-inc/OneS1ght-Flutter-SDK
-      ref: v0.0.1
+  ones1ght_sdk: ^0.0.2
 ```
 
 ```dart
-import 'package:ones1ght_sdk/ones1ght.dart';
+import 'package:ones1ght_sdk/ones1ght_sdk.dart';
 ```
+
+> `package:ones1ght_sdk/ones1ght.dart` (the 0.0.1 path) still works.
 
 ### iOS
 
