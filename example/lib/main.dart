@@ -9,7 +9,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:ones1ght_sdk/ones1ght.dart';
+import 'package:ones1ght_sdk/ones1ght_sdk.dart';
 import 'package:path_provider/path_provider.dart';
 
 const _sdkKey = String.fromEnvironment('ONES1GHT_SDK_KEY');

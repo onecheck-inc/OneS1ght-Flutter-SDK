@@ -22,7 +22,7 @@ import 'models.dart';
 
 abstract final class OneS1ght {
   /// 이 Flutter 플러그인의 버전. 네이티브 SDK 버전은 [sdkVersion].
-  static const String pluginVersion = '0.0.1';
+  static const String pluginVersion = '0.0.2';
 
   /// 아래에 붙은 네이티브 SDK 의 버전(서버 로그의 sdk_version 에 실린다).
   static Future<String> sdkVersion() async => await invoke<String>('sdkVersion') ?? '';

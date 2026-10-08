@@ -5,7 +5,7 @@
 // 측위(UWB) 자체는 지원 기기 + 설치된 매장이 있어야 해서 여기서 보지 않는다.
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:ones1ght_sdk/ones1ght.dart';
+import 'package:ones1ght_sdk/ones1ght_sdk.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
