@@ -28,6 +28,9 @@ class RunnerTests: XCTestCase {
   func testFloorSessionBeforeInitializeIsE1001() {
     let error = call("floorSession") as? FlutterError
     XCTAssertEqual(error?.code, "E1001")
+    // 이름("notInitialized")이 아니라 사람이 읽는 문구 + 코드가 와야 한다(Android 와 같은 모양).
+    XCTAssertTrue(error?.message?.hasSuffix("(E1001)") ?? false, error?.message ?? "nil")
+    XCTAssertNotEqual(error?.message, "notInitialized")
     XCTAssertEqual((error?.details as? [String: Any])?["kind"] as? String, "sdk")
   }
 
