@@ -289,7 +289,8 @@ public final class Ones1ghtPlugin: NSObject, FlutterPlugin, FlutterStreamHandler
     /// SDK 오류는 E-코드를 그대로 넘긴다 — Android 와 같은 코드라 앱은 플랫폼을 가리지 않고 분기한다.
     private static func flutterError(_ error: Error) -> FlutterError {
         if let e = error as? SdkError {
-            return FlutterError(code: e.code.rawValue, message: "\(e)",
+            // 사람이 읽는 문구 + 코드 — Android SDK 예외 메시지("… (E2001)")와 같은 모양으로 맞춘다.
+            return FlutterError(code: e.code.rawValue, message: "\(e.code.summary) (\(e.code.rawValue))",
                                 details: ["kind": "sdk", "name": "\(e)"])
         }
         if let e = error as? ApiError {
