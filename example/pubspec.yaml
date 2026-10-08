@@ -20,6 +20,8 @@ dependencies:
   # 예제는 이 레포의 플러그인을 그대로 쓴다. 실제 앱은 git 의존성으로 붙인다(README).
   ones1ght_sdk:
     path: ../
+  # 로그·프로필 파일 위치(앱 Documents) — 예제만 쓴다.
+  path_provider: ^2.1.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
