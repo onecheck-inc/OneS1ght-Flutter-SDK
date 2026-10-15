@@ -1,0 +1,53 @@
+{
+  "platform": "flutter",
+  "currentVersion": "0.0.4",
+  "_readme": [
+    "판올림마다 이 파일에 한 칸을 더한다. 비어 있으면 MCP 가 '변경 없음' 이라고 답할 근거가 없어",
+    "에이전트가 추측으로 코드를 고치게 된다 — 그게 이 파일이 존재하는 이유다.",
+    "changes[] 의 각 항목은 '무엇이 어떻게 바뀌었나' 가 아니라 '코드를 어떻게 고치나' 로 쓴다.",
+    "⚠️ 0.0.x 에서 `^` 는 그 판 하나만 받는다 — pubspec 의 제약도 함께 올려야 새 판을 받는다."
+  ],
+  "migrations": [
+    {
+      "from": "0.0.1",
+      "to": "0.0.2",
+      "breaking": false,
+      "summary": "pub.dev 에 공개 — git 의존성 대신 pub 로 받는다. 대표 import 경로가 ones1ght_sdk.dart 가 됐다(옛 경로도 동작).",
+      "action": "pubspec 의 git 의존성을 `ones1ght_sdk: ^0.0.2` 로 바꾸고, import 를 `package:ones1ght_sdk/ones1ght_sdk.dart` 로 옮긴다(옛 `ones1ght.dart` 도 그대로 동작하므로 필수는 아니다). API·동작 변경 없음.",
+      "changes": [
+        {
+          "file": "pubspec.yaml",
+          "before": "ones1ght_sdk:\n  git:\n    url: https://github.com/onecheck-inc/OneS1ght-Flutter-SDK\n    ref: v0.0.1",
+          "after": "ones1ght_sdk: ^0.0.2"
+        },
+        {
+          "file": "*.dart",
+          "before": "import 'package:ones1ght_sdk/ones1ght.dart';",
+          "after": "import 'package:ones1ght_sdk/ones1ght_sdk.dart';"
+        }
+      ]
+    },
+    {
+      "from": "0.0.2",
+      "to": "0.0.3",
+      "breaking": false,
+      "summary": "iOS 에서 OneS1ghtException.message 가 오류 이름(notInitialized)만 오던 것을 Android 처럼 '문구 (E1001)' 로 바꿨다. code·kind·name 은 그대로.",
+      "action": "pubspec 을 `^0.0.3` 으로 올린다(0.0.x 의 ^ 는 그 판만 받는다). message 문자열을 비교해 분기하던 코드가 있다면 code 로 분기하도록 고친다.",
+      "changes": [
+        {
+          "file": "*.dart",
+          "before": "if (e.message == 'notInitialized') { … }",
+          "after": "if (e.code == 'E1001') { … }"
+        }
+      ]
+    },
+    {
+      "from": "0.0.3",
+      "to": "0.0.4",
+      "breaking": false,
+      "summary": "코딩 에이전트(MCP)용 코드 조각·마이그레이션 파일을 추가했다. 플러그인 코드·동작 변경 없음.",
+      "action": "pubspec 을 `^0.0.4` 로 올린다. 코드는 고칠 것이 없다. iOS 27.2 이상 대응이 안 돼 있으면 Snippets permission 단계(위치 '항상')를 따른다.",
+      "changes": []
+    }
+  ]
+}

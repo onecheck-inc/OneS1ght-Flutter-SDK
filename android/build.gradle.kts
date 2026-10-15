@@ -1,5 +1,5 @@
 group = "co.onecheck.ones1ght.flutter"
-version = "0.0.1"
+version = "0.0.4"
 
 buildscript {
     val kotlinVersion = "2.4.0"

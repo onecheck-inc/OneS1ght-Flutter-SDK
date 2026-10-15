@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.0.4 — preview
+
+No plugin code or behavior changes.
+
+- **Coding-agent support (MCP):** added `Snippets/flutter.json` (12 steps, Dart) and `Migrations/flutter.json`, read by the
+  OneS1ght SDK MCP server (`onesight_snippet` / `onesight_migrate` with `platform: flutter`).
+- README: Xcode 27+ build requirement, profile example creates once and reuses the stored id (`ageBand`, same keys as
+  the native SDKs), and `permission_handler` must be imported with a prefix (`PermissionStatus` name clash).
+- Use `^0.0.4` — in Dart a caret on `0.0.x` allows only that patch.
+
 ## 0.0.3 — preview
 
 - iOS: SDK error `message` is now a readable sentence with the code (`"… (E1001)"`), the same shape as Android.

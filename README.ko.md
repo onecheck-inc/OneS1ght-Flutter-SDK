@@ -22,6 +22,7 @@ Dart API 이름은 iOS SDK 를 따릅니다. 네이티브 콜백(`onZoneEnter`, 
 | Flutter | **3.44+** (Swift Package Manager 켜짐 — 3.44 부터 기본값) |
 | iOS | 패키지: iOS 18.0+ · 측위: **iOS 27.0+**, UWB 칩이 있는 iPhone |
 | Android | 패키지: `minSdk 26` · `compileSdk 37` · 측위: **Android 17 (API 37)+**, UWB DL-TDoA 지원 기기 |
+| 빌드 | Xcode 27 이상 (iOS SDK 가 iOS 27 SDK 를 필요로 함) |
 | 네이티브 SDK (고정) | iOS `0.2.2` · Android `0.0.9` |
 
 측위가 안 되는 기기에서도 앱은 정상 동작하고 측위만 꺼져 있습니다.
@@ -41,7 +42,7 @@ flutter pub add ones1ght_sdk
 
 ```yaml
 dependencies:
-  ones1ght_sdk: ^0.0.3
+  ones1ght_sdk: ^0.0.4
 ```
 
 ```dart
@@ -85,6 +86,9 @@ iOS 배포 타깃을 **18.0** 으로 올립니다(`ios/Runner.xcodeproj` → `IP
 부터 '앱 사용 중' 권한에서는 시스템이 계속 "밖" 으로 알립니다. `NSLocationAlwaysAndWhenInUseUsageDescription`
 을 넣고, '앱 사용 중' 허용 뒤 앱이 직접 '항상' 을 요청하세요(예: [`permission_handler`](https://pub.dev/packages/permission_handler)
 의 `Permission.locationAlways.request()`). SDK 는 '항상' 을 요청하지 않습니다.
+
+> `permission_handler` 는 접두사를 붙여 가져오세요 — `PermissionStatus` 이름이 SDK 와 겹칩니다:
+> `import 'package:permission_handler/permission_handler.dart' as ph;` 후 `ph.Permission.locationAlways.request()`.
 
 > ⚠️ `UIBackgroundModes` 에 `bluetooth-central` 은 넣지 마세요. SDK 는 백그라운드에서 측위를 멈춰 이 모드를
 > 쓰지 않고, App Store 심사에서 쓰지 않는 백그라운드 모드(2.5.4)로 거절될 수 있습니다.
@@ -153,7 +157,12 @@ final status = await OneS1ght.requestPermission();   // 시스템 창이 뜹니�
 ## Step 4: 프로필
 
 ```dart
-final profileId = await OneS1ght.createProfile({'ageGroup': '20s'});   // 앱이 보관합니다
+// 처음 한 번 만들어 앱에 보관(예: shared_preferences)하고, 매 실행 그 값을 씁니다.
+var profileId = await loadSavedProfileId();
+if (profileId == null) {
+  profileId = await OneS1ght.createProfile({'ageBand': '20s'});   // 정확한 나이 대신 연령대
+  await saveProfileId(profileId);
+}
 await OneS1ght.identify(profileId: profileId);   // begin() 전에 필수
 ```
 

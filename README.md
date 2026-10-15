@@ -23,6 +23,7 @@ The Dart API follows the iOS SDK names. Native callbacks (`onZoneEnter`, `onPosi
 | Flutter | **3.44+** (Swift Package Manager on — the default since 3.44) |
 | iOS | Package: iOS 18.0+ · Positioning: **iOS 27.0+**, iPhone with a UWB chip |
 | Android | Package: `minSdk 26` · `compileSdk 37` · Positioning: **Android 17 (API 37)+**, UWB DL-TDoA capable device |
+| Build | Xcode 27+ (the iOS SDK needs the iOS 27 SDK) |
 | Native SDKs (pinned) | iOS `0.2.2` · Android `0.0.9` |
 
 On devices that cannot position, the app runs normally; only positioning stays inactive.
@@ -42,7 +43,7 @@ or in `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  ones1ght_sdk: ^0.0.3
+  ones1ght_sdk: ^0.0.4
 ```
 
 ```dart
@@ -88,6 +89,9 @@ monitoring, and from iOS 27.2 the system keeps reporting "outside" under "While 
 `NSLocationAlwaysAndWhenInUseUsageDescription` and request "Always" yourself once "While Using" is granted
 (for example with [`permission_handler`](https://pub.dev/packages/permission_handler):
 `Permission.locationAlways.request()`). The SDK does not request it.
+
+> Import `permission_handler` with a prefix — its `PermissionStatus` has the same name as the SDK's:
+> `import 'package:permission_handler/permission_handler.dart' as ph;` then `ph.Permission.locationAlways.request()`.
 
 > ⚠️ Do **not** add `bluetooth-central` to `UIBackgroundModes`. The SDK stops positioning in the
 > background and does not use it; App Review can reject unused background modes (2.5.4).
@@ -158,7 +162,12 @@ position).
 ## Step 4: Profile
 
 ```dart
-final profileId = await OneS1ght.createProfile({'ageGroup': '20s'});   // store it in your app
+// Create once, store it (for example with shared_preferences) and reuse it on every launch.
+var profileId = await loadSavedProfileId();
+if (profileId == null) {
+  profileId = await OneS1ght.createProfile({'ageBand': '20s'});   // an age band, not an exact age
+  await saveProfileId(profileId);
+}
 await OneS1ght.identify(profileId: profileId);   // required before begin()
 ```
 
