@@ -42,7 +42,8 @@ abstract final class OneS1ght {
   /// 초기화 성공 여부(키 유효 + 설정 로드됨). 기기 지원 여부는 별개 — [deviceAvailability].
   static Future<bool> isInitialized() async => await invoke<bool>('isInitialized') ?? false;
 
-  /// 이 기기에서 측위가 가능한가 + 불가 사유. initialize 전에도 부를 수 있다.
+  /// 이 기기에서 측위가 가능한가 + 불가 사유. iOS 는 언제든 부를 수 있다.
+  /// Android 는 [initialize] 다음에 읽는다 — 그 전에는 UWB 칩을 물어볼 Context 가 없어 `deviceNotSupported` 다.
   static Future<DeviceAvailability> deviceAvailability() async {
     final raw = await invoke<String>('deviceAvailability');
     return DeviceAvailability.values.firstWhere(
