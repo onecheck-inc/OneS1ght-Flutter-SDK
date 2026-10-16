@@ -79,6 +79,9 @@ if they are missing:
     <key>Positioning</key>
     <string>Used to calculate your precise indoor position.</string>
 </dict>
+<!-- iOS 27.2+: needed to request "Always" for floor detection (see below) -->
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>Used to find your floor in the store on iOS 27.2 and later.</string>
 ```
 
 > ⚠️ The key inside `NSLocationTemporaryUsageDescriptionDictionary` must be exactly **`Positioning`**.
@@ -140,9 +143,9 @@ switch (await OneS1ght.deviceAvailability()) {
   case DeviceAvailability.available:
     break;
   case DeviceAvailability.osVersionTooLow:
-    // "Update the OS"
+    showNotice('Update the OS to use indoor positioning');
   case DeviceAvailability.deviceNotSupported:
-    // "This device does not support indoor positioning"
+    showNotice('This device does not support indoor positioning');
 }
 ```
 
@@ -216,11 +219,14 @@ and Android:
 | `E1002` | Invalid or revoked SDK key |
 | `E1003` | Positioning disabled for this tenant |
 | `E1004` | `identify(profileId:)` not called before `begin()` |
+| `E1007` | Positioning key not available from the console (missing, or the lookup failed). Reported through `onDebugLog`; `buildings()` returns an empty list instead of throwing |
 | `E2001` | OS version too low for positioning |
 | `E2002` | Device does not support UWB positioning |
 | `E3001` | No floor / building set (`setFloorMap` needs `buildingId` the first time) |
+| `E3007` | Positioning started but the floor was never found (`onDebugLog`, warning). On iOS 27.2+ check that location permission is "Always" |
 | `E5001` | Network failure |
 | `unsupportedActivity` | Android — `MainActivity` is not a `FlutterFragmentActivity` |
+| `internal` | Unexpected error inside the plugin (`kind` is `plugin`) |
 
 `kind` is `sdk`, `api` or `plugin`. Server errors also carry `status` and `detail`.
 

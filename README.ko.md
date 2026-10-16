@@ -77,6 +77,9 @@ iOS 배포 타깃을 **18.0** 으로 올립니다(`ios/Runner.xcodeproj` → `IP
     <key>Positioning</key>
     <string>정확한 실내 위치를 계산하는 데 사용합니다.</string>
 </dict>
+<!-- iOS 27.2 이상: 층 찾기에 필요한 '항상' 권한 요청용(아래 참고) -->
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>iOS 27.2 이상에서 매장의 층을 찾는 데 사용합니다.</string>
 ```
 
 > ⚠️ `NSLocationTemporaryUsageDescriptionDictionary` 안의 키는 **`Positioning`** 이어야 합니다.
@@ -137,9 +140,9 @@ switch (await OneS1ght.deviceAvailability()) {
   case DeviceAvailability.available:
     break;
   case DeviceAvailability.osVersionTooLow:
-    // "OS 업데이트 후 사용 가능"
+    showNotice('OS 업데이트 후 사용할 수 있습니다');
   case DeviceAvailability.deviceNotSupported:
-    // "이 기기는 실내 측위를 지원하지 않습니다"
+    showNotice('이 기기는 실내 측위를 지원하지 않습니다');
 }
 ```
 
@@ -210,11 +213,14 @@ await session.end();
 | `E1002` | SDK 키 무효·폐기 |
 | `E1003` | 이 고객사에서 측위가 꺼져 있음 |
 | `E1004` | `begin()` 전에 `identify(profileId:)` 를 안 부름 |
+| `E1007` | 측위 키를 콘솔에서 못 받음(없거나 조회 실패). `onDebugLog` 로 알리고, `buildings()` 는 예외 대신 빈 목록 |
 | `E2001` | 측위하기엔 OS 가 낮음 |
 | `E2002` | UWB 측위 미지원 기기 |
 | `E3001` | 층·건물 미지정(`setFloorMap` 은 처음에 `buildingId` 가 필요) |
+| `E3007` | 측위를 켰는데 층을 끝내 못 찾음(`onDebugLog`, 경고). iOS 27.2 이상이면 위치 권한이 '항상' 인지 확인 |
 | `E5001` | 네트워크 실패 |
 | `unsupportedActivity` | Android — `MainActivity` 가 `FlutterFragmentActivity` 가 아님 |
+| `internal` | 플러그인 내부의 예상 못 한 오류(`kind` 는 `plugin`) |
 
 `kind` 는 `sdk` · `api` · `plugin` 입니다. 서버 오류는 `status`·`detail` 도 함께 옵니다.
 

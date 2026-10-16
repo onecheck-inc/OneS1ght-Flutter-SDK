@@ -17,7 +17,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # 예제는 이 레포의 플러그인을 그대로 쓴다. 실제 앱은 git 의존성으로 붙인다(README).
+  # 예제는 이 레포의 플러그인을 그대로 쓴다. 실제 앱은 `flutter pub add ones1ght_sdk` 로 붙인다(README).
   ones1ght_sdk:
     path: ../
   # 로그·프로필 파일 위치(앱 Documents) — 예제만 쓴다.
