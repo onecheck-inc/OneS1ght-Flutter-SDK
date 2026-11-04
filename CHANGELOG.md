@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.0.5 — preview
+
+Native SDKs updated: iOS 0.2.2 → 0.2.7, Android 0.0.9 → 0.0.12. No Dart API changes.
+
+- **Positions no longer move to the next user:** when the profile changes, unsent positions of the previous user are
+  discarded (`E5006`), and positions are not buffered while no profile is set.
+- **iOS:** the positioning engine's diagnostic logs moved out of the app's `Documents` into its temporary folder and are
+  cleared on initialization. Three symbolic links appear in the app's `Documents`.
+- **Android:** position logs from the engine no longer reach logcat in apps with minify enabled.
+- Includes the native positioning and stability fixes released since the previous pins.
+- Use `^0.0.5` — in Dart a caret on `0.0.x` allows only that patch.
+
 ## 0.0.4 — preview
 
 No plugin code or behavior changes.

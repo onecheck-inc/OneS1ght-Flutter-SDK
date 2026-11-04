@@ -1,6 +1,6 @@
 {
   "platform": "flutter",
-  "currentVersion": "0.0.4",
+  "currentVersion": "0.0.5",
   "_readme": [
     "판올림마다 이 파일에 한 칸을 더한다. 비어 있으면 MCP 가 '변경 없음' 이라고 답할 근거가 없어",
     "에이전트가 추측으로 코드를 고치게 된다 — 그게 이 파일이 존재하는 이유다.",
@@ -47,6 +47,14 @@
       "breaking": false,
       "summary": "코딩 에이전트(MCP)용 코드 조각·마이그레이션 파일을 추가했다. 플러그인 코드·동작 변경 없음.",
       "action": "pubspec 을 `^0.0.4` 로 올린다. 코드는 고칠 것이 없다. iOS 27.2 이상 대응이 안 돼 있으면 Snippets permission 단계(위치 '항상')를 따른다.",
+      "changes": []
+    },
+    {
+      "from": "0.0.4",
+      "to": "0.0.5",
+      "breaking": false,
+      "summary": "네이티브 SDK 를 iOS 0.2.7 · Android 0.0.12 로 올렸다. 프로필이 바뀌면 앞 사용자의 미전송 좌표를 버리고, iOS 엔진 로그를 앱 Documents 밖으로 옮겼다. Dart API 변경 없음.",
+      "action": "pubspec 을 `^0.0.5` 로 올린다. 코드는 고칠 것이 없다.",
       "changes": []
     }
   ]

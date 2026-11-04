@@ -1,6 +1,6 @@
 {
   "platform": "flutter",
-  "sdkVersion": "0.0.4",
+  "sdkVersion": "0.0.5",
   "language": "dart",
   "requirements": {
     "positioning": {
@@ -38,7 +38,7 @@
         {
           "path": "pubspec.yaml",
           "language": "yaml",
-          "code": "dependencies:\n  ones1ght_sdk: ^0.0.4   # 0.0.x 의 ^ 는 그 판 하나만 받는다 — 판이 오르면 같이 올린다"
+          "code": "dependencies:\n  ones1ght_sdk: ^0.0.5   # 0.0.x 의 ^ 는 그 판 하나만 받는다 — 판이 오르면 같이 올린다"
         },
         {
           "path": "lib/main.dart",
