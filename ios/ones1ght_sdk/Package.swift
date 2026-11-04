@@ -22,7 +22,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "FlutterFramework", path: "../FlutterFramework"),
-        .package(url: "https://github.com/onecheck-inc/OneS1ght-iOS-SDK", exact: "0.2.2"),
+        .package(url: "https://github.com/onecheck-inc/OneS1ght-iOS-SDK", exact: "0.2.7"),
     ],
     targets: [
         .target(
