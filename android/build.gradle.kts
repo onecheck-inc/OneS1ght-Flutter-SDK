@@ -74,7 +74,7 @@ kotlin {
 
 dependencies {
     // 네이티브 SDK 는 exact 로 고정한다 — 범위 참조는 앱 빌드를 조용히 바꾼다.
-    implementation("com.ones1ght.sdk:android:0.0.12")
+    implementation("com.ones1ght.sdk:android:0.0.13")
     // 코루틴(Dispatchers.Main 포함)은 SDK 가 함께 싣는다 — 여기서 버전을 따로 박지 않는다.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.mockito:mockito-core:5.0.0")
