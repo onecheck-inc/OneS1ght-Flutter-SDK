@@ -42,7 +42,7 @@ flutter pub add ones1ght_sdk
 
 ```yaml
 dependencies:
-  ones1ght_sdk: ^0.0.5
+  ones1ght_sdk: ^0.0.6
 ```
 
 ```dart

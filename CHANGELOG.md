@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.6 — preview
+
+Native SDKs updated: iOS 0.2.7 → 0.2.8, Android 0.0.12 → 0.0.13. No Dart API changes.
+
+- **Zone dwell now reaches the server:** when a zone has a dwell time set, dwell is sent to the server and dwell events
+  from the console arrive through triggers. The on-device dwell callback is unchanged.
+
 ## 0.0.5 — preview
 
 Native SDKs updated: iOS 0.2.2 → 0.2.7, Android 0.0.9 → 0.0.12. No Dart API changes.
